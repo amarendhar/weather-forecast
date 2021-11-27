@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Routes, Route } from 'react-router-dom'
-import { Header, Footer } from 'Containers'
+import { Header, Footer } from 'containers'
 import { Home, NotFound } from 'pages'
 
 const App = () => {
