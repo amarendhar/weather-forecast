@@ -9,7 +9,8 @@
     "eject": "react-scripts eject",
     "type-check": "tsc --noEmit",
     "prettier": "prettier src --write",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "prepare-husky": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
@@ -49,6 +50,7 @@
     "typescript": "~4.1.5"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "prettier": "^2.5.0"
   }
