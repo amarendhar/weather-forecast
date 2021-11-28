@@ -47,15 +47,16 @@ export type Weather = {
   message: number
 }
 
-export interface WeatherState {
-  // `status` prop is suggested by reduxjs-toolkit tutorial, instead of `isLoading & hasError` props.
+export type WeatherState = {
   status: Status
   data: Weather
+  error: string | null | undefined
 }
 
 const initialState: WeatherState = {
   data: {} as Weather,
-  status: Status.IDEAL,
+  status: Status.IDLE,
+  error: null,
 }
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -65,11 +66,20 @@ const initialState: WeatherState = {
 // typically used to make async requests.
 export const fetchWeather = createAsyncThunk(
   'weather/fetchWeather',
-  async () => {
-    const response = await fetch('/weather')
-    const data = await response.json()
-    // The value we return becomes the `fulfilled` action payload
-    return data
+  async (arg, { rejectWithValue }) => {
+    try {
+      const response = await fetch('/weather')
+      const data = await response.json()
+
+      if (!data || data?.errorMessage) {
+        throw new Error('Data not found')
+      }
+
+      // The value we return becomes the `fulfilled` action payload
+      return data
+    } catch (error) {
+      return rejectWithValue((error as Error).message)
+    }
   }
 )
 
@@ -83,14 +93,18 @@ export const weatherSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchWeather.pending, (state) => {
-        state.status = Status.LOADING
+        state.status = Status.PENDING
+        state.error = null
       })
       .addCase(fetchWeather.fulfilled, (state, action) => {
-        state.status = Status.IDEAL
+        state.status = Status.FULFILLED
         state.data = action.payload
+        state.error = null
       })
-      .addCase(fetchWeather.rejected, (state) => {
-        state.status = Status.FAILED
+      .addCase(fetchWeather.rejected, (state, action) => {
+        state.status = Status.REJECTED
+        state.data = {} as Weather
+        state.error = action.payload as string
       })
   },
 })

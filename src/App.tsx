@@ -1,18 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Routes, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import { Header, Footer } from 'containers'
-import { Home, NotFound } from 'pages'
+import { Weather, NotFound } from 'pages'
 
 const App = () => {
   return (
     <>
       <Header />
       <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Switch>
+          <Route exact path="/" component={Weather} />
+          <Route path="*" component={NotFound} />
+        </Switch>
       </Container>
       <Footer />
     </>

@@ -1,4 +1,4 @@
-import Home from './Home'
 import NotFound from './NotFound'
+import Weather from './Weather'
 
-export { Home, NotFound }
+export { NotFound, Weather }

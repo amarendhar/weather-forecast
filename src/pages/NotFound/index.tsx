@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 const NotFound = () => (
-  <Container>
-    <div>Page Not Found</div>
-    <NavLink to="/" className="selected">
+  <Container data-testid="not-found-page">
+    <div data-testid="not-found-title">Page Not Found</div>
+    <NavLink data-testid="not-found-goback" to="/" className="selected">
       Go Back
     </NavLink>
   </Container>

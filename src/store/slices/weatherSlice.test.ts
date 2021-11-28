@@ -9,24 +9,27 @@ import weatherReducer, {
 describe('weather reducer', () => {
   const initialState: WeatherState = {
     data: {} as Weather,
-    status: Status.IDEAL,
+    status: Status.IDLE,
+    error: null,
   }
 
-  it('Should handle initial state', () => {
+  it('Should handle initial-state', () => {
     expect(weatherReducer(undefined, { type: 'unknown' })).toEqual({
       data: {},
-      status: 'idle',
+      status: Status.IDLE,
+      error: null,
     })
   })
 
-  it('Should handle loading', () => {
+  it('Should handle pending', () => {
     const actual = weatherReducer(initialState, {
       type: fetchWeather.pending,
     })
 
     expect(actual).toEqual({
       data: {},
-      status: Status.LOADING,
+      status: Status.PENDING,
+      error: null,
     })
   })
 
@@ -38,19 +41,23 @@ describe('weather reducer', () => {
 
     expect(actual).toEqual({
       data: mockWeather,
-      status: Status.IDEAL,
+      status: Status.FULFILLED,
+      error: null,
     })
   })
 
   it('Should handle rejected', () => {
+    const error = new Error('Data not found')
+
     const actual = weatherReducer(initialState, {
       type: fetchWeather.rejected,
-      payload: mockWeather,
+      payload: error.message,
     })
 
     expect(actual).toEqual({
       data: {},
-      status: Status.FAILED,
+      status: Status.REJECTED,
+      error: 'Data not found',
     })
   })
 })
