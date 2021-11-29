@@ -44,7 +44,7 @@ const Weather = () => {
               tempMin={tempMin}
             />
           )}
-          <WeatherItemContainer>
+          <WeatherItemContainer role="tablist">
             {data?.list?.map((list) => (
               <WeatherItem
                 key={list.dt}
@@ -72,10 +72,17 @@ const Container = styled.div`
   padding: ${({ theme }) => theme.space.lg}px;
 `
 
-const WeatherItemContainer = styled.div`
+const WeatherItemContainer = styled.ul`
   display: flex;
   width: 100%;
   overflow: auto;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-block: 0;
+  margin-inline: 0;
+  padding-inline: 0;
 
   grid-gap: ${({ theme }) => theme.space.md}px;
   padding: ${({ theme }) => theme.space.lg}px;

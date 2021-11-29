@@ -38,16 +38,14 @@ const WeatherReport = ({
             {kelvinToCelsius(tempMin)}&deg;
           </div>
         </div>
-        <div data-testid="weather-report-temp">
-          {kelvinToCelsius(temp)}&deg;
-        </div>
+        <h3 data-testid="weather-report-temp">{kelvinToCelsius(temp)}&deg;</h3>
       </Temp>
       <City>
         <div data-testid="weather-report-city">{city.name}</div>
-        <div data-testid="weather-report-date">
+        <h3 data-testid="weather-report-date">
           <div>{moment(selectedWeather.dt_txt).format('dddd')}</div>
           <div>{moment(selectedWeather.dt_txt).format('DD. MMMM')}</div>
-        </div>
+        </h3>
       </City>
     </Container>
   )
@@ -80,7 +78,8 @@ const Temp = styled.div`
     grid-gap: ${({ theme }) => theme.space.lg}px;
   }
 
-  > div:last-child {
+  > h3 {
+    margin: 0;
     display: flex;
     flex: 1;
     align-items: center;
@@ -99,7 +98,9 @@ const City = styled.div`
     color: ${({ theme }) => theme.palette.text.dark};
   }
 
-  > div:last-child {
+  > h3 {
+    margin: 0;
+
     font-weight: 700;
     font-size: 30px;
   }

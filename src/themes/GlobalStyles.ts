@@ -26,6 +26,16 @@ const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>`
   .h-overflow-hidden {
     overflow: hidden;
   }
+
+  .h-sr-only {
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0px, 0px, 0px, 0px);
+  }
 `
 
 export default GlobalStyle

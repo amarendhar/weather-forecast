@@ -12,6 +12,15 @@
     "lint-staged": "lint-staged",
     "prepare-husky": "husky install"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.tsx",
+      "!src/serviceWorker.ts",
+      "!src/components/Icons/**",
+      "!src/themes/**"
+    ]
+  },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
       "prettier --write",

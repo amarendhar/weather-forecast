@@ -21,15 +21,34 @@ const WeatherItem = ({
 
   return (
     <Container
+      role="button"
+      tabIndex={0}
       data-testid="weather-item"
+      onKeyDown={(e) => {
+        // Check to see if space or enter were pressed
+        if (
+          // "Spacebar" for IE11 support
+          e.key === ' ' ||
+          e.key === 'Enter' ||
+          e.key === 'Spacebar'
+        ) {
+          // Pre the default action to stop scrolling when space is pressed
+          e.preventDefault()
+          handleSelectedWeather(weather.dt)
+        }
+      }}
       onClick={() => {
         handleSelectedWeather(weather.dt)
       }}
       isSelected={isSelected}
     >
+      <span className="h-sr-only">
+        Weather Report for&nbsp;{moment(weather.dt_txt).format('dddd DD MMMM')}
+      </span>
       <Time data-testid="weather-item-time">
         {moment(weather.dt_txt).format('HH:mm')}
       </Time>
+      <span className="h-sr-only">is {weather.weather[0].main}</span>
       <div>
         <Icon width={50} height={50} />
       </div>
@@ -42,13 +61,14 @@ const WeatherItem = ({
 
 export default WeatherItem
 
-const Container = styled.div<{ isSelected: boolean }>`
+const Container = styled.li<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 100px;
   color: white;
   cursor: pointer;
+  transition: background-color 300ms;
 
   border-radius: ${({ theme }) => theme.radii.md}px;
   padding: ${({ theme }) => theme.space.lg}px;
