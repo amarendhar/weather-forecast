@@ -10,7 +10,8 @@
     "type-check": "tsc --noEmit",
     "prettier": "prettier src --write",
     "lint-staged": "lint-staged",
-    "prepare-husky": "husky install"
+    "prepare-husky": "husky install",
+    "coverage": "npm run test a -- --coverage --watchAll=false"
   },
   "jest": {
     "collectCoverageFrom": [
