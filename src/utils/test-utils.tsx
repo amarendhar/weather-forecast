@@ -11,7 +11,7 @@ import App from 'App'
 const render = (
   ui: React.ReactElement,
   {
-    route = '/',
+    route = '',
     // @ts-ignore
     preloadedState = {},
     // @ts-ignore

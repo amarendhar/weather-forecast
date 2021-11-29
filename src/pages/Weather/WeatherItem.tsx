@@ -27,11 +27,15 @@ const WeatherItem = ({
       }}
       isSelected={isSelected}
     >
-      <Time>{moment(weather.dt_txt).format('HH:mm')}</Time>
+      <Time data-testid="weather-item-time">
+        {moment(weather.dt_txt).format('HH:mm')}
+      </Time>
       <div>
         <Icon width={50} height={50} />
       </div>
-      <Temp>{kelvinToCelsius(weather.main.temp)}&deg;</Temp>
+      <Temp data-testid="weather-item-temp">
+        {kelvinToCelsius(weather.main.temp)}&deg;
+      </Temp>
     </Container>
   )
 }

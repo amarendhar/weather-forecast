@@ -1,4 +1,4 @@
-import { renderHook } from 'utils/test-utils-hook'
+import { renderHook, act } from 'utils/test-utils-hook'
 import { rest } from 'msw'
 import { server } from 'mocks/server'
 import mockWeather from 'mocks/mockWeather'
@@ -11,9 +11,9 @@ describe('useWeather', () => {
     const { result } = renderHook(() => useWeather())
 
     expect(result.current).toEqual({
-      data: {},
-      error: null,
       status: Status.PENDING,
+      error: null,
+      data: {},
       getWeather: expect.any(Function),
       selectedWeather: null,
       handleSelectedWeather: expect.any(Function),
@@ -28,9 +28,9 @@ describe('useWeather', () => {
     await waitForNextUpdate()
 
     expect(result.current).toEqual({
-      data: mockWeather,
-      error: null,
       status: Status.FULFILLED,
+      error: null,
+      data: mockWeather,
       getWeather: expect.any(Function),
       selectedWeather: mockWeather.list[0],
       handleSelectedWeather: expect.any(Function),
@@ -39,7 +39,22 @@ describe('useWeather', () => {
     })
   })
 
+  it('Should update selectedWeather', async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useWeather())
+
+    await waitForNextUpdate()
+
+    expect(result.current.selectedWeather).toEqual(mockWeather.list[0])
+
+    act(() => {
+      result.current.handleSelectedWeather(mockWeather.list[1].dt)
+    })
+
+    expect(result.current.selectedWeather).toEqual(mockWeather.list[1])
+  })
+
   it('Should handle error-response from API', async () => {
+    // Note: To mock error-responses, refer https://mswjs.io/docs/recipes/mocking-error-responses
     server.use(
       rest.get('/weather', (req, res, ctx) => {
         return res(
@@ -58,9 +73,9 @@ describe('useWeather', () => {
 
     await waitFor(() => {
       expect(result.current).toEqual({
-        data: {},
-        error: 'Data not found',
         status: Status.REJECTED,
+        error: 'Data not found',
+        data: {},
         getWeather: expect.any(Function),
         selectedWeather: null,
         handleSelectedWeather: expect.any(Function),

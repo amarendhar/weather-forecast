@@ -9,7 +9,7 @@ const useWeather = () => {
     null | Weather['list'][0]
   >(null)
 
-  // Callback to Fetch on retry.
+  // Fetch on retry.
   const getWeather = useCallback(() => {
     dispatch(fetchWeather())
   }, [dispatch])

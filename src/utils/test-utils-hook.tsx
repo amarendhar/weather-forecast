@@ -10,4 +10,7 @@ const renderHook = (hook: any) => {
   return reactRenderHook(() => hook(), { wrapper })
 }
 
+// re-export everything
+export * from '@testing-library/react-hooks'
+// override renderHook method
 export { renderHook }

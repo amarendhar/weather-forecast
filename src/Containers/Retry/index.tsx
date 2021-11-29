@@ -24,5 +24,11 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   color: white;
+
   grid-gap: ${({ theme }) => theme.space.lg}px;
+
+  button {
+    padding: ${({ theme }) => theme.space.md}px;
+    cursor: pointer;
+  }
 `

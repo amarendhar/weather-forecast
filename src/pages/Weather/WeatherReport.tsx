@@ -19,41 +19,43 @@ const WeatherReport = ({
   tempMin,
 }: WeatherReportProps) => {
   const {
-    weather: [weather],
+    weather: [{ main }],
     main: { temp },
   } = selectedWeather
 
-  const Icon = WeatherIcons[weather.main as keyof typeof WeatherIcons]
+  const Icon = WeatherIcons[main as keyof typeof WeatherIcons]
 
   return (
-    <Stats>
+    <Container data-testid="weather-report">
       <div>
         <Icon width={100} height={100} />
       </div>
       <Temp>
         <div>
-          <div>{weather.main}</div>
-          <div>
+          <div data-testid="weather-report-main">{main}</div>
+          <div data-testid="weather-report-temp-minmax">
             {kelvinToCelsius(tempMax)}&deg;&nbsp;/&nbsp;
             {kelvinToCelsius(tempMin)}&deg;
           </div>
         </div>
-        <div>{kelvinToCelsius(temp)}&deg;</div>
+        <div data-testid="weather-report-temp">
+          {kelvinToCelsius(temp)}&deg;
+        </div>
       </Temp>
       <City>
-        <div>{city.name}</div>
-        <div>
+        <div data-testid="weather-report-city">{city.name}</div>
+        <div data-testid="weather-report-date">
           <div>{moment(selectedWeather.dt_txt).format('dddd')}</div>
           <div>{moment(selectedWeather.dt_txt).format('DD. MMMM')}</div>
         </div>
       </City>
-    </Stats>
+    </Container>
   )
 }
 
 export default WeatherReport
 
-const Stats = styled.div`
+const Container = styled.div`
   display: flex;
   color: white;
 
