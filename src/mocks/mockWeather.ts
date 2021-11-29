@@ -1259,3 +1259,47 @@ const mockWeather = {
 }
 
 export default mockWeather
+
+// export const fn = () => {
+//   const data = mockWeather.list.map((val) => {
+//     return {
+//       clouds: val.clouds.all,
+//       ...val.weather[0],
+//     }
+//   })
+
+//   const tempArr: Record<string, string[]> = {}
+
+//   ;['clouds', 'main', 'description', 'icon'].forEach((key) => {
+//     data.forEach((val) => {
+//       tempArr[key] = tempArr[key] || []
+//       // @ts-ignore
+//       if (!tempArr[key].includes(val[key])) {
+//         // @ts-ignore
+//         tempArr[key].push(val[key])
+//       }
+//     })
+//   })
+
+//   console.log('data -> ', data)
+//   console.log('tempArr -> ', tempArr)
+
+//   const tempResult = {
+//     clouds: [0, 76, 92, 64, 88, 56, 8, 24, 20],
+//     main: ['Clear', 'Clouds', 'Rain'],
+//     description: [
+//       'clear sky',
+//       'broken clouds',
+//       'light rain',
+//       'moderate rain',
+//       'few clouds',
+//     ],
+//     icon: ['01d', '01n', '04n', '10n', '10d', '02d', '02n'],
+//   }
+
+//   const tempData = mockWeather.list.map((val) => {
+//     return val.main.temp
+//   })
+
+//   console.log('tempData -> ', tempData, Math.min(...tempData), Math.max(...tempData))
+// }

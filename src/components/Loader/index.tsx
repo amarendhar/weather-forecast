@@ -24,6 +24,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: fill-available;
+
+  color: white;
 `
 
 const Text = styled.h3`

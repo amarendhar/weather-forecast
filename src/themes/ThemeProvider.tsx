@@ -25,13 +25,29 @@ const fontWeights: Record<'regular' | 'bold', number> = {
 
 const radii: Record<'sm' | 'md' | 'lg', number> = {
   sm: 3,
-  md: 5,
+  md: 6,
   lg: 10,
 }
 
 const shadows: Record<'header' | 'box', string> = {
   header: '0 0 5px 0 black',
   box: '0px 3px 5px 0px rgb(0 0 0 / 20%);',
+}
+
+const palette: Record<
+  'primary' | 'text',
+  { main: string; dark: string; light: string }
+> = {
+  primary: {
+    main: '#262a59',
+    dark: '#3b3f69',
+    light: '#51557a',
+  },
+  text: {
+    main: '#000000',
+    dark: '#a8aabd',
+    light: '#ffffff',
+  },
 }
 
 const breakpoints: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', number> = {
@@ -107,14 +123,15 @@ export const mediaQueries: Record<
   },
 }
 
-const theme = {
+export const theme = {
   space,
   fontSizes,
   fontWeights,
   radii,
   shadows,
+  palette,
   mediaQueries,
-  breakpoints: [breakpoints.sm, breakpoints.md, breakpoints.lg],
+  breakpoints: Object.values(breakpoints),
 }
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => (

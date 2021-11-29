@@ -15,6 +15,10 @@ describe('useWeather', () => {
       error: null,
       status: Status.PENDING,
       getWeather: expect.any(Function),
+      selectedWeather: null,
+      handleSelectedWeather: expect.any(Function),
+      tempMax: 0,
+      tempMin: 0,
     })
   })
 
@@ -28,6 +32,10 @@ describe('useWeather', () => {
       error: null,
       status: Status.FULFILLED,
       getWeather: expect.any(Function),
+      selectedWeather: mockWeather.list[0],
+      handleSelectedWeather: expect.any(Function),
+      tempMax: 286.67,
+      tempMin: 267.295,
     })
   })
 
@@ -54,6 +62,10 @@ describe('useWeather', () => {
         error: 'Data not found',
         status: Status.REJECTED,
         getWeather: expect.any(Function),
+        selectedWeather: null,
+        handleSelectedWeather: expect.any(Function),
+        tempMax: 0,
+        tempMin: 0,
       })
     })
   })

@@ -6,7 +6,6 @@ type RetryProps = {
   onRetry?: () => void
 }
 
-// ToDo: Add test-cases
 const Retry = ({ onRetry, ...restProps }: RetryProps) => {
   return (
     <Container data-testid={restProps['data-testid'] || 'retry'}>
@@ -24,5 +23,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
   grid-gap: ${({ theme }) => theme.space.lg}px;
 `

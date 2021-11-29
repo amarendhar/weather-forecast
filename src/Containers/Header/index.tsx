@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom'
 const Header = () => {
   return (
     <Container>
-      <NavLink to="/" className="selected">
+      <NavLinkContainer to="/" className="selected">
         Weather
-      </NavLink>
+      </NavLinkContainer>
     </Container>
   )
 }
@@ -24,4 +24,14 @@ const Container = styled.div`
   display: flex;
   justify-content: space-around;
   box-shadow: ${({ theme }) => theme.shadows.header};
+`
+
+const NavLinkContainer = styled(NavLink)`
+  padding: ${({ theme }) => theme.space.md}px;
+  text-decoration: none;
+  color: ${({ theme }) => theme.palette.primary.main};
+
+  &:hover {
+    color: ${({ theme }) => theme.palette.primary.dark};
+  }
 `

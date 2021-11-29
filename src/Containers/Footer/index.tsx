@@ -23,5 +23,5 @@ const Container = styled.footer`
   padding: ${({ theme }) => theme.space.md}px;
 
   background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  color: ${({ theme }) => theme.palette.text.dark};
 `

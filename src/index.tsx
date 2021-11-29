@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { store } from 'store'
 import ThemeProvider from 'themes/ThemeProvider'
 import App from './App'
+import './fonts.css'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
