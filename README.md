@@ -17,6 +17,13 @@ Launches the test runner in the interactive watch mode.
 ### `npm run coverage`
 
 To generate the coverage report.
+### `npm run type-check`
+
+To check typescript errors.
+
+### `npm run lint-staged`
+
+To run prettier & test-cases for the staged-files.
 
 ## Notes
   - For this application `redux-state-management` library is not necessary, as it doesn't require to maintain global-state across the pages, because it has only one page with an independent state from the respective API. But redux-library is installed & used to support the future requirements and to show the usage of the new `@reduxjs/toolkit`.
@@ -39,4 +46,4 @@ To generate the coverage report.
   - Re-installed all libraries with `node-v14.18.1` to support latest versions of libraries such as `lint-staged-v12.1.2`.
   - Added `type-check` to check for `type-errors`.
   - Added `prettier` to format the code.
-
+  - redux-logger is installed to watch over store-updates in development mode.

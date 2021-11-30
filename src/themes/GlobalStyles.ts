@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>`
   html, body, #root {
     font-family: roboto;
     min-height: 100vh;
+    overflow: hidden;
   }
 
   #root {
