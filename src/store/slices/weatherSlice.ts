@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { RootState } from 'store'
+import { AppState } from 'store'
 import { Status } from 'types'
 
 export type Weather = {
@@ -15,7 +15,7 @@ export type Weather = {
   cnt: number
   cod: string
   list: {
-    dt: number
+    dt: number // date timestamp
     main: {
       temp: number
       temp_min: number
@@ -28,7 +28,7 @@ export type Weather = {
     }
     weather: {
       id: number
-      main: string // Clear
+      main: string // Clear/Clouds/Rain
       description: string
       icon: string
     }[]
@@ -42,7 +42,7 @@ export type Weather = {
     sys: {
       pod: string
     }
-    dt_txt: string // date
+    dt_txt: string // date in string
   }[]
   message: number
 }
@@ -111,7 +111,7 @@ export const weatherSlice = createSlice({
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.weather.value)`
-export const selectWeather = (state: RootState) => state.weather
+// in the slice file. For example: `useSelector((state: AppState) => state.weather.value)`
+export const selectWeather = (state: AppState) => state.weather
 
 export default weatherSlice.reducer

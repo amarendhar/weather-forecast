@@ -7,13 +7,13 @@ import kelvinToCelsius from 'utils/kelvinToCelsius'
 
 type WeatherItemProps = {
   weather: Weather['list'][0]
-  handleSelectedWeather: (id: number) => void
+  handleSelectWeather: (id: number) => void
   isSelected: boolean
 }
 
 const WeatherItem = ({
   weather,
-  handleSelectedWeather,
+  handleSelectWeather,
   isSelected,
 }: WeatherItemProps) => {
   const Icon =
@@ -21,24 +21,10 @@ const WeatherItem = ({
 
   return (
     <Container
-      role="button"
-      tabIndex={0}
       data-testid="weather-item"
-      onKeyDown={(e) => {
-        // Check to see if space or enter were pressed
-        if (
-          // "Spacebar" for IE11 support
-          e.key === ' ' ||
-          e.key === 'Enter' ||
-          e.key === 'Spacebar'
-        ) {
-          // Pre the default action to stop scrolling when space is pressed
-          e.preventDefault()
-          handleSelectedWeather(weather.dt)
-        }
-      }}
+      href="#"
       onClick={() => {
-        handleSelectedWeather(weather.dt)
+        handleSelectWeather(weather.dt)
       }}
       isSelected={isSelected}
     >
@@ -61,7 +47,7 @@ const WeatherItem = ({
 
 export default WeatherItem
 
-const Container = styled.li<{ isSelected: boolean }>`
+const Container = styled.a<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,6 +66,7 @@ const Container = styled.li<{ isSelected: boolean }>`
   &:hover {
     background-color: ${({ theme }) => theme.palette.primary.dark};
   }
+  text-decoration: none;
 `
 
 const Time = styled.div`

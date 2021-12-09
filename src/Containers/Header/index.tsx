@@ -14,7 +14,7 @@ const Header = () => {
 
 export default Header
 
-const Container = styled.div`
+const Container = styled.header`
   position: sticky;
   background-color: white;
   transition: width 300ms;

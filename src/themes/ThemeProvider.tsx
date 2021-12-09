@@ -31,7 +31,7 @@ const radii: Record<'sm' | 'md' | 'lg', number> = {
 
 const shadows: Record<'header' | 'box', string> = {
   header: '0 0 5px 0 black',
-  box: '0px 3px 5px 0px rgb(0 0 0 / 20%);',
+  box: '0px 3px 5px 0px rgb(0 0 0 / 20%)',
 }
 
 const palette: Record<

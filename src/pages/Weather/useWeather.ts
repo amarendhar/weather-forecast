@@ -23,7 +23,7 @@ const useWeather = () => {
     setSelectedWeather(data?.list?.[0] || null)
   }, [data])
 
-  const handleSelectedWeather = useCallback(
+  const handleSelectWeather = useCallback(
     (id) => {
       if (data.list.length) {
         setSelectedWeather(
@@ -60,7 +60,7 @@ const useWeather = () => {
     data,
     getWeather,
     selectedWeather,
-    handleSelectedWeather,
+    handleSelectWeather,
     tempMax,
     tempMin,
   }

@@ -46,4 +46,4 @@ To run prettier & test-cases for the staged-files.
   - Re-installed all libraries with `node-v14.18.1` to support latest versions of libraries such as `lint-staged-v12.1.2`.
   - Added `type-check` to check for `type-errors`.
   - Added `prettier` to format the code.
-  - redux-logger is installed to watch over store-updates in development mode.
+  - `redux-logger` is installed to watch over store-updates in development mode.

@@ -14,11 +14,14 @@ const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>`
   html, body, #root {
     font-family: roboto;
     min-height: 100vh;
-    overflow: hidden;
   }
 
   #root {
     position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    
     padding-bottom: 40px;
     background-color: ${({ theme }) => theme.palette.primary.main};
   }

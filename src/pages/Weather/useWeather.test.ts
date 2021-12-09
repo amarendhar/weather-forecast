@@ -16,7 +16,7 @@ describe('useWeather', () => {
       data: {},
       getWeather: expect.any(Function),
       selectedWeather: null,
-      handleSelectedWeather: expect.any(Function),
+      handleSelectWeather: expect.any(Function),
       tempMax: 0,
       tempMin: 0,
     })
@@ -33,7 +33,7 @@ describe('useWeather', () => {
       data: mockWeather,
       getWeather: expect.any(Function),
       selectedWeather: mockWeather.list[0],
-      handleSelectedWeather: expect.any(Function),
+      handleSelectWeather: expect.any(Function),
       tempMax: 286.67,
       tempMin: 267.295,
     })
@@ -47,7 +47,7 @@ describe('useWeather', () => {
     expect(result.current.selectedWeather).toEqual(mockWeather.list[0])
 
     act(() => {
-      result.current.handleSelectedWeather(mockWeather.list[1].dt)
+      result.current.handleSelectWeather(mockWeather.list[1].dt)
     })
 
     expect(result.current.selectedWeather).toEqual(mockWeather.list[1])
@@ -78,7 +78,7 @@ describe('useWeather', () => {
         data: {},
         getWeather: expect.any(Function),
         selectedWeather: null,
-        handleSelectedWeather: expect.any(Function),
+        handleSelectWeather: expect.any(Function),
         tempMax: 0,
         tempMin: 0,
       })

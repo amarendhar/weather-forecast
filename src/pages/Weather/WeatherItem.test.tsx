@@ -8,7 +8,7 @@ import { theme } from 'themes/ThemeProvider'
 describe('WeatherItem', () => {
   const commonProps = {
     weather: mockWeather.list[0],
-    handleSelectedWeather: jest.fn(),
+    handleSelectWeather: jest.fn(),
     isSelected: false,
   }
 
@@ -52,11 +52,11 @@ describe('WeatherItem', () => {
     )
   })
 
-  it('Should invoke handleSelectedWeather with selected-id onClick', () => {
+  it('Should invoke handleSelectWeather with selected-id onClick', () => {
     renderComponent()
 
     screen.getByTestId('weather-item').click()
-    expect(commonProps.handleSelectedWeather).toHaveBeenCalledWith(
+    expect(commonProps.handleSelectWeather).toHaveBeenCalledWith(
       commonProps.weather.dt
     )
   })

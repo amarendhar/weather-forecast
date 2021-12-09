@@ -21,8 +21,10 @@ const App = () => {
 
 export default App
 
-const Container = styled.div`
+const Container = styled.main`
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `

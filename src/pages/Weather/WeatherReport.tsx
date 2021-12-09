@@ -62,6 +62,7 @@ const Container = styled.div`
   ${({ theme }) => theme.mediaQueries['<sm']} {
     flex-direction: column;
     align-items: center;
+
     text-align: center;
   }
 `
@@ -73,19 +74,20 @@ const Temp = styled.div`
 
   > div:first-child {
     display: flex;
-    color: ${({ theme }) => theme.palette.text.dark};
-
     grid-gap: ${({ theme }) => theme.space.lg}px;
+
+    color: ${({ theme }) => theme.palette.text.dark};
   }
 
   > h3 {
-    margin: 0;
     display: flex;
     flex: 1;
     align-items: center;
 
-    font-weight: 700;
+    margin: 0;
+
     font-size: 50px;
+    font-weight: 700;
   }
 `
 
@@ -101,7 +103,7 @@ const City = styled.div`
   > h3 {
     margin: 0;
 
-    font-weight: 700;
     font-size: 30px;
+    font-weight: 700;
   }
 `

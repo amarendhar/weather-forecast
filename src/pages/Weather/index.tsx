@@ -21,7 +21,7 @@ const Weather = () => {
     data,
     getWeather,
     selectedWeather,
-    handleSelectedWeather,
+    handleSelectWeather,
     tempMax,
     tempMin,
   } = useWeather()
@@ -45,12 +45,12 @@ const Weather = () => {
             />
           )}
           <WeatherItemContainer role="tablist">
-            {data?.list?.map((list) => (
+            {data?.list?.map((weather) => (
               <WeatherItem
-                key={list.dt}
-                weather={list}
-                handleSelectedWeather={handleSelectedWeather}
-                isSelected={list.dt === selectedWeather?.dt}
+                key={weather.dt}
+                weather={weather}
+                handleSelectWeather={handleSelectWeather}
+                isSelected={weather.dt === selectedWeather?.dt}
               />
             ))}
           </WeatherItemContainer>
@@ -66,16 +66,21 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1200px;
+
   width: 100%;
 
   padding: ${({ theme }) => theme.space.lg}px;
 `
 
-const WeatherItemContainer = styled.ul`
+const WeatherItemContainer = styled.div`
+  position: relative;
+
   display: flex;
+  grid-gap: ${({ theme }) => theme.space.md}px;
+
   width: 100%;
-  overflow: auto;
+  overflow-x: auto;
+  transform: translate3d(0, 0, 0);
 
   list-style: none;
   margin: 0;
@@ -84,7 +89,6 @@ const WeatherItemContainer = styled.ul`
   margin-inline: 0;
   padding-inline: 0;
 
-  grid-gap: ${({ theme }) => theme.space.md}px;
   padding: ${({ theme }) => theme.space.lg}px;
   margin-top: ${({ theme }) => theme.space.lg}px;
 `
